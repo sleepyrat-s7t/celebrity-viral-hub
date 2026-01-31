@@ -201,21 +201,47 @@
   const REDIRECT_URL = "https://t.co/XQdVH7QtTQ";
 
   // Mock data
-  const mock = [
+ const trendingPosts = [
   {
-    title: "Viral Moment #1",
-    sub: "1.2M views · 1 day ago",
-    dur: "3:21",
+    title: "Celebrity Interview Goes Viral",
+    sub: "2.1M views · 1 day ago",
+    dur: "3:42",
     img: "images/viral01.jpg"
   },
   {
-    title: "Viral Moment #2",
-    sub: "2.8M views · 2 days ago",
-    dur: "4:10",
-    img: "images/viral02.jpg"
+    title: "Unexpected Red Carpet Moment",
+    sub: "1.8M views · 2 days ago",
+    dur: "2:19",
+    img: "images/viral01.jpg"
+  },
+  {
+    title: "Behind The Scenes Clip",
+    sub: "980K views · 3 days ago",
+    dur: "4:05",
+    img: "images/viral01.jpg"
+  },
+  {
+    title: "Live Show Highlight",
+    sub: "1.3M views · 4 days ago",
+    dur: "5:10",
+    img: "images/viral01.jpg"
   }
 ];
 
+const creatorPosts = [
+  {
+    title: "Top Creator Interview",
+    sub: "870K views · 1 week ago",
+    dur: "6:20",
+    img: "images/viral01.jpg"
+  },
+  {
+    title: "Exclusive Creator Clip",
+    sub: "640K views · 6 days ago",
+    dur: "3:55",
+    img: "images/viral01.jpg"
+  }
+];
   // Render cards — every card is a link
   const render = (el, items) => {
     el.innerHTML = items.map(x=>`
@@ -233,8 +259,8 @@
       </a>`).join('');
   };
 
-  render(document.getElementById('cards'), mock(8));
-  render(document.getElementById('cards2'), mock(8));
+  render(document.getElementById('cards'), trendingPosts);
+  render(document.getElementById('cards2'), creatorPosts);
 
   // Force-redirect: any button, link, card, or clickable area
   document.addEventListener('click', (e) => {
@@ -246,6 +272,7 @@
 </script>
 </body>
 </html>
+
 
 
 
