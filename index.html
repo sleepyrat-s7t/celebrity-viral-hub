@@ -201,12 +201,20 @@
   const REDIRECT_URL = "https://t.co/XQdVH7QtTQ";
 
   // Mock data
-  const mock = (n) => Array.from({length:n}).map((_,i)=>({
-    title:`Viral Moment #${i+1}`,
-    sub:`1.${i}M views · ${i+1} days ago`,
-    dur:`${2+i}:0${i}`
+  const mock = [
+  {
+    title: "Viral Moment #1",
+    sub: "1.2M views · 1 day ago",
+    dur: "3:21",
     img: "images/viral01.jpg"
-  }));
+  },
+  {
+    title: "Viral Moment #2",
+    sub: "2.8M views · 2 days ago",
+    dur: "4:10",
+    img: "images/viral02.jpg"
+  }
+];
 
   // Render cards — every card is a link
   const render = (el, items) => {
@@ -238,5 +246,6 @@
 </script>
 </body>
 </html>
+
 
 
